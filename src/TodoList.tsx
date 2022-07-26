@@ -7,12 +7,13 @@ export const TodoList = () => {
     <>
       <List>
         {store.todos.map((item) => (
-          <ListItem key={item.id} divider={true} button={true}>
-            <Checkbox
-              edge="start"
-              checked={item.isDone}
-              onClick={() => store.toggleTodoItem(item.id)}
-            />
+          <ListItem
+            key={item.id}
+            divider={true}
+            button={true}
+            onClick={() => store.toggleTodoItem(item.id)}
+          >
+            <Checkbox edge="start" checked={item.isDone} />
 
             <ListItemText
               primary={item.text}
