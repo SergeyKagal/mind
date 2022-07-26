@@ -3,3 +3,7 @@ export interface ITodoItem {
   text: string;
   isDone: boolean;
 }
+export interface IListMode {
+  id: string;
+  label: string;
+}

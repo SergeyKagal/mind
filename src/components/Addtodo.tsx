@@ -23,7 +23,12 @@ const Addtodo = () => {
   return (
     <>
       <form onSubmit={submitHandler}>
-        <Stack direction="row" spacing={1}>
+        <Stack
+          direction="row"
+          spacing={1}
+          alignItems="center"
+          justifyContent="center"
+        >
           <TextField
             name="text"
             sx={{ width: 330 }}

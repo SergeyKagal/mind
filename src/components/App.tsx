@@ -1,13 +1,14 @@
 import React from 'react';
-import Addtodo from './components/Addtodo';
+import Addtodo from './Addtodo';
 import TodoList from './TodoList';
 import { Paper, Typography } from '@mui/material';
+import Controls from './Controls';
 
 function App() {
   return (
     <div className="App">
       <Paper
-        sx={{ minHeight: 400, width: 0.55, p: 3, mx: 'auto' }}
+        sx={{ minHeight: 500, width: 0.65, p: 3, mx: 'auto', mt: 4 }}
         elevation={7}
       >
         <Addtodo />
@@ -15,6 +16,7 @@ function App() {
           Todo list
         </Typography>
         <TodoList />
+        <Controls />
       </Paper>
     </div>
   );

@@ -1,9 +1,24 @@
-import { makeObservable, observable, action, toJS } from 'mobx';
-import { ITodoItem } from './types';
+import { makeObservable, observable, action, toJS, computed } from 'mobx';
+import { IListMode, ITodoItem } from './types';
 
 class store {
   todos: ITodoItem[] = [];
-  itemsLeft: string = 'Todo list is empty';
+
+  listModeArray: IListMode[] = [
+    { id: 'all', label: 'All' },
+    { id: 'active', label: 'Active' },
+    { id: 'completed', label: 'Completed' },
+  ];
+
+  controlButtonAlignment: string = 'All';
+
+  clearTodos() {
+    this.todos = [];
+  }
+
+  setAlignment(event: React.MouseEvent<HTMLElement>, newAlignment: string) {
+    this.controlButtonAlignment = newAlignment;
+  }
 
   addTodo(text: string) {
     this.todos.push({
@@ -11,7 +26,6 @@ class store {
       text: text.trim(),
       isDone: false,
     });
-    this.itemsLeftCounter();
   }
 
   toggleTodoItem(id: string) {
@@ -22,10 +36,19 @@ class store {
         return item;
       }
     });
-    this.itemsLeftCounter();
   }
 
-  itemsLeftCounter() {
+  get showTodos() {
+    if (this.controlButtonAlignment === 'Active') {
+      return this.todos.filter((item) => !item.isDone);
+    }
+    if (this.controlButtonAlignment === 'Completed') {
+      return this.todos.filter((item) => item.isDone);
+    }
+    return this.todos;
+  }
+
+  get itemsLeftCounter() {
     let count = 0;
     toJS(this.todos).forEach((item) => {
       if (!item.isDone) {
@@ -33,22 +56,25 @@ class store {
       }
     });
     if (!count && !toJS(this.todos).length) {
-      this.itemsLeft = 'Todo list is empty';
-      return;
+      return 'Todo list is empty';
     }
     if (!count && toJS(this.todos).length) {
-      this.itemsLeft = 'All items is done';
-      return;
+      return 'All items is done';
     }
-    this.itemsLeft = count > 1 ? `${count} items left` : `${count} item left`;
+    return count > 1 ? `${count} items left` : `${count} item left`;
   }
+
   constructor() {
     makeObservable(this, {
       todos: observable,
-      itemsLeft: observable,
+      listModeArray: observable,
+      controlButtonAlignment: observable,
+      setAlignment: action,
       addTodo: action,
       toggleTodoItem: action,
-      itemsLeftCounter: action,
+      clearTodos: action,
+      itemsLeftCounter: computed,
+      showTodos: computed,
     });
   }
 }
