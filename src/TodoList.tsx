@@ -1,6 +1,14 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { List, ListItem, Divider, ListItemText, Checkbox } from '@mui/material';
+import {
+  List,
+  ListItem,
+  Toolbar,
+  ListItemText,
+  Checkbox,
+  Button,
+  Typography,
+} from '@mui/material';
 import store from './store';
 export const TodoList = () => {
   return (
@@ -22,6 +30,12 @@ export const TodoList = () => {
           </ListItem>
         ))}
       </List>
+      <Toolbar>
+        <Typography component="div" sx={{ flexGrow: 1 }}>
+          {store.itemsLeft}
+        </Typography>
+        <Button color="inherit">Login</Button>
+      </Toolbar>
     </>
   );
 };

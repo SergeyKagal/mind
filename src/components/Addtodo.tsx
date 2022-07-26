@@ -22,11 +22,11 @@ const Addtodo = () => {
 
   return (
     <>
-      <Stack direction="row" spacing={1}>
-        <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler}>
+        <Stack direction="row" spacing={1}>
           <TextField
             name="text"
-            sx={{ width: 350 }}
+            sx={{ width: 330 }}
             id="standard-basic"
             label="What needs to be done ?"
             variant="outlined"
@@ -36,13 +36,13 @@ const Addtodo = () => {
 
           <Button
             variant="contained"
-            sx={{ width: 110, height: 55 }}
+            sx={{ height: 55 }}
             onClick={() => addTodoHandler(text)}
           >
             Add Todo
           </Button>
-        </form>
-      </Stack>
+        </Stack>
+      </form>
     </>
   );
 };
