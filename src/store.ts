@@ -13,7 +13,7 @@ class store {
   controlButtonAlignment: string = 'All';
 
   clearTodos() {
-    this.todos = [];
+    this.todos = this.todos.filter((item) => !item.isDone);
   }
 
   setAlignment(event: React.MouseEvent<HTMLElement>, newAlignment: string) {
