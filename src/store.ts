@@ -22,7 +22,7 @@ class store {
 
   addTodo(text: string) {
     this.todos.push({
-      id: new Date().toLocaleString(),
+      id: new Date().toISOString(),
       text: text.trim(),
       isDone: false,
     });

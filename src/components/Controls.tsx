@@ -35,7 +35,11 @@ const Controls = () => {
           exclusive
         >
           {store.listModeArray.map((item) => (
-            <ToggleButton key={item.id} value={item.label}>
+            <ToggleButton
+              key={item.id}
+              value={item.label}
+              data-testid={item.label}
+            >
               {item.label}
             </ToggleButton>
           ))}
