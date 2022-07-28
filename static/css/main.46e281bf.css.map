@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.46e281bf.css","mappings":"AAAA,KACE,sBAGF,QAEE,WADA,4BACA","sources":["index.scss"],"sourcesContent":["body {\n  background-color: #dddddd;\n}\n\n.isDone {\n  text-decoration: line-through;\n  color: #aaaaaa;\n}\n"],"names":[],"sourceRoot":""}
